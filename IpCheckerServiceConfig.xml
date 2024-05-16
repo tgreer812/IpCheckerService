@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuration>
-	<EndpointUrl>http://127.0.0.1:8888</EndpointUrl>
+	<EndpointUrl>http://your-custom-endpoint:9999</EndpointUrl>
 	<HeartbeatInterval>
-		<Days>0</Days>
+		<Days>1</Days>
 		<Hours>0</Hours>
 		<Minutes>0</Minutes>
-		<Seconds>5</Seconds>
+		<Seconds>0</Seconds>
 		<Milliseconds>0</Milliseconds>
 	</HeartbeatInterval>
-	<LogFilePath>C:\Logs\IpCheckerService.log</LogFilePath>
-	<DeviceName>TylerHome</DeviceName>
+	<LogFilePath>C:\Path\to\logfile.log</LogFilePath>
+	<DeviceName>YourDeviceName</DeviceName>
 </Configuration>
