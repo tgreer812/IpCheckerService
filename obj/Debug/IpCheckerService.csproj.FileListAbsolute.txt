@@ -1,0 +1,10 @@
+C:\Users\tgree\source\repos\IpCheckerService\IpCheckerService\bin\Debug\IpCheckerService.exe.config
+C:\Users\tgree\source\repos\IpCheckerService\IpCheckerService\bin\Debug\IpCheckerService.exe
+C:\Users\tgree\source\repos\IpCheckerService\IpCheckerService\bin\Debug\IpCheckerService.pdb
+C:\Users\tgree\source\repos\IpCheckerService\IpCheckerService\obj\Debug\IpCheckerService.csproj.AssemblyReference.cache
+C:\Users\tgree\source\repos\IpCheckerService\IpCheckerService\obj\Debug\IpCheckerService.csproj.CoreCompileInputs.cache
+C:\Users\tgree\source\repos\IpCheckerService\IpCheckerService\obj\Debug\IpCheckerService.exe
+C:\Users\tgree\source\repos\IpCheckerService\IpCheckerService\obj\Debug\IpCheckerService.pdb
+C:\Users\tgree\source\repos\IpCheckerService\IpCheckerService\bin\Debug\Newtonsoft.Json.dll
+C:\Users\tgree\source\repos\IpCheckerService\IpCheckerService\bin\Debug\Newtonsoft.Json.xml
+C:\Users\tgree\source\repos\IpCheckerService\IpCheckerService\obj\Debug\IpCheckerService.csproj.CopyComplete
