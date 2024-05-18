@@ -108,8 +108,17 @@ namespace IpCheckerService
                     string jsonData = JsonConvert.SerializeObject(data);
                     Log($"[INFO] Sending IP Address to {EndpointUrl}");
                     var content = new StringContent(jsonData, System.Text.Encoding.UTF8, "application/json");
-                    await client.PostAsync(EndpointUrl, content);
-                    Log($"[INFO] IP Address successfully sent to {EndpointUrl}");
+                    var postResponse = await client.PostAsync(EndpointUrl, content);
+
+                    if (postResponse.IsSuccessStatusCode)
+                    {
+                        Log("[INFO] Check-in successful.");
+                    }
+                    else
+                    {
+                        Log($"[ERROR] Check-in failed: {postResponse.ReasonPhrase}");
+                    }
+                    
                 }
             }
             catch (Exception ex)
