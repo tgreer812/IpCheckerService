@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpCheckerService.Worker", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpCheckerService.Tests", "IpCheckerService.Tests\IpCheckerService.Tests.csproj", "{98865F05-D0E4-4511-92AD-C52172E23BCC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpCheckerService.Console", "IpCheckerService.Console\IpCheckerService.Console.csproj", "{970E43BA-7144-44A6-8876-5044D07DC029}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{98865F05-D0E4-4511-92AD-C52172E23BCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98865F05-D0E4-4511-92AD-C52172E23BCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98865F05-D0E4-4511-92AD-C52172E23BCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{970E43BA-7144-44A6-8876-5044D07DC029}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{970E43BA-7144-44A6-8876-5044D07DC029}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{970E43BA-7144-44A6-8876-5044D07DC029}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{970E43BA-7144-44A6-8876-5044D07DC029}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

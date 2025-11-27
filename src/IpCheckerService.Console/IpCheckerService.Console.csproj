@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\IpCheckerService.Worker\IpCheckerService.Worker.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <Target Name="CopyTestConfig" AfterTargets="PostBuildEvent">
+    <Copy SourceFiles="$(ProjectDir)IpCheckerServiceConfigV2.xml" DestinationFolder="$(OutDir)" Condition="Exists('$(ProjectDir)IpCheckerServiceConfigV2.xml')" />
+  </Target>
+
+</Project>
