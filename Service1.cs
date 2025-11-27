@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.ServiceProcess;
@@ -8,6 +9,7 @@ using System.Xml.Linq;
 using System.Threading;
 using Newtonsoft.Json;
 using System.Runtime.InteropServices;
+using IpCheckerService.ReportingEngines;
 
 namespace IpCheckerService
 {
@@ -17,11 +19,17 @@ namespace IpCheckerService
     public partial class Service1 : ServiceBase
     {
         private System.Timers.Timer _timer;
-        private string EndpointUrl = "http://127.0.0.1:9999"; // Default endpoint
         private double _interval = 24 * 60 * 60 * 1000; // 24 hours in milliseconds (default)
         private string logFilePath = AppDomain.CurrentDomain.BaseDirectory + "IpCheckerService.log"; // Default log file path
         private string _name = "DEFAULTNAME"; // Default name
         private static readonly object logLock = new object();
+        private List<IReportingEngine> _reportingEngines = new List<IReportingEngine>();
+
+        private static readonly Dictionary<string, Type> ReportingEngineTypes = new Dictionary<string, Type>
+        {
+            { "HttpReportingEngine", typeof(HttpReportingEngine) }
+            // Add more engine types here as they are created
+        };
 
         public Service1()
         {
@@ -34,20 +42,55 @@ namespace IpCheckerService
         /// </summary>
         private void LoadConfiguration()
         {
-            string configPath = AppDomain.CurrentDomain.BaseDirectory + "IpCheckerServiceConfig.xml";
+            string configPath = AppDomain.CurrentDomain.BaseDirectory + "IpCheckerServiceConfigV2.xml";
             if (File.Exists(configPath))
             {
                 try
                 {
                     XElement config = XElement.Load(configPath);
-                    EndpointUrl = config.Element("EndpointUrl")?.Value ?? EndpointUrl;
                     _interval = GetIntervalFromConfig(config.Element("HeartbeatInterval"));
                     logFilePath = config.Element("LogFilePath")?.Value ?? logFilePath;
                     _name = config.Element("DeviceName")?.Value ?? _name;
+
+                    InitializeReportingEngines(config.Element("ReportingEngines"));
                 }
                 catch (Exception ex)
                 {
                     Log($"[ERROR] loading configuration: {ex.Message}");
+                }
+            }
+        }
+
+        private void InitializeReportingEngines(XElement reportingEnginesConfig)
+        {
+            if (reportingEnginesConfig == null) return;
+
+            foreach (var engineConfig in reportingEnginesConfig.Elements("ReportEngine"))
+            {
+                string engineType = engineConfig.Attribute("type")?.Value;
+                if (string.IsNullOrEmpty(engineType))
+                {
+                    Log("[WARN] ReportEngine element missing 'type' attribute, skipping.");
+                    continue;
+                }
+
+                if (ReportingEngineTypes.TryGetValue(engineType, out Type type))
+                {
+                    try
+                    {
+                        var engine = (IReportingEngine)Activator.CreateInstance(type);
+                        engine.Initialize(engineConfig, _name, Log);
+                        _reportingEngines.Add(engine);
+                        Log($"[INFO] Initialized reporting engine: {engineType}");
+                    }
+                    catch (Exception ex)
+                    {
+                        Log($"[ERROR] Failed to initialize {engineType}: {ex.Message}");
+                    }
+                }
+                else
+                {
+                    Log($"[WARN] Unknown reporting engine type: {engineType}");
                 }
             }
         }
@@ -99,26 +142,17 @@ namespace IpCheckerService
                     var ipAddress = await response.Content.ReadAsStringAsync();
                     Log($"[INFO] Current IP Address: {ipAddress}");
 
-                    var data = new
+                    foreach (var engine in _reportingEngines)
                     {
-                        Name = "mydevbox",
-                        IPv4 = ipAddress
-                    };
-
-                    string jsonData = JsonConvert.SerializeObject(data);
-                    Log($"[INFO] Sending IP Address to {EndpointUrl}");
-                    var content = new StringContent(jsonData, System.Text.Encoding.UTF8, "application/json");
-                    var postResponse = await client.PostAsync(EndpointUrl, content);
-
-                    if (postResponse.IsSuccessStatusCode)
-                    {
-                        Log("[INFO] Check-in successful.");
+                        try
+                        {
+                            await engine.ReportAsync(ipAddress);
+                        }
+                        catch (Exception ex)
+                        {
+                            Log($"[ERROR] Reporting engine failed: {ex.Message}");
+                        }
                     }
-                    else
-                    {
-                        Log($"[ERROR] Check-in failed: {postResponse.ReasonPhrase}");
-                    }
-                    
                 }
             }
             catch (Exception ex)

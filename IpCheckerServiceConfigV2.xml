@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+	<HeartbeatInterval>
+		<Days>1</Days>
+		<Hours>0</Hours>
+		<Minutes>0</Minutes>
+		<Seconds>0</Seconds>
+		<Milliseconds>0</Milliseconds>
+	</HeartbeatInterval>
+	<LogFilePath>C:\Path\to\logfile.log</LogFilePath>
+	<DeviceName>YourDeviceName</DeviceName>
+	<ReportingEngines>
+		<ReportEngine type="HttpReportingEngine">
+			<EndpointUrl>http://your-custom-endpoint:9999</EndpointUrl>
+		</ReportEngine>
+		<ReportEngine type="EmailReportingEngine">
+			<EmailAddress>your-email-address@emailprovider.com</EmailAddress>
+		</ReportEngine>
+	</ReportingEngines>
+</Configuration>
