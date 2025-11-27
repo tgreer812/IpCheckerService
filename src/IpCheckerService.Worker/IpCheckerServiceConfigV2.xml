@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Configuration>
 	<HeartbeatInterval>
 		<Days>1</Days>
@@ -7,7 +7,6 @@
 		<Seconds>0</Seconds>
 		<Milliseconds>0</Milliseconds>
 	</HeartbeatInterval>
-	<LogFilePath>C:\Path\to\logfile.log</LogFilePath>
 	<DeviceName>YourDeviceName</DeviceName>
 	<ReportingEngines>
 		<ReportEngine type="HttpReportingEngine">
