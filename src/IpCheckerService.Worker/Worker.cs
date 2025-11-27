@@ -64,7 +64,7 @@ public class Worker : BackgroundService
                 try
                 {
                     var engine = (IReportingEngine)Activator.CreateInstance(type)!;
-                    engine.Initialize(engineConfig, _deviceName, msg => _logger.LogInformation("{Message}", msg));
+                    engine.Initialize(engineConfig, _deviceName, _logger);
                     _reportingEngines.Add(engine);
                     _logger.LogInformation("Initialized reporting engine: {EngineType}", engineType);
                 }

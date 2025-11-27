@@ -13,7 +13,12 @@
 			<EndpointUrl>http://your-custom-endpoint:9999</EndpointUrl>
 		</ReportEngine>
 		<ReportEngine type="EmailReportingEngine">
-			<EmailAddress>your-email-address@emailprovider.com</EmailAddress>
+			<EmailAddress>recipient@example.com</EmailAddress>
+			<SmtpHost>smtp.gmail.com</SmtpHost>
+			<SmtpPort>587</SmtpPort>
+			<SmtpUsername>your-email@gmail.com</SmtpUsername>
+			<SmtpPassword>your-app-password</SmtpPassword>
+			<UseSsl>true</UseSsl>
 		</ReportEngine>
 	</ReportingEngines>
 </Configuration>

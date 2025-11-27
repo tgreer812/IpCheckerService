@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\tgree\\source\\repos\\IpCheckerService\\src\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{44A97C11-9E5E-4800-BCD6-65DB306503EA}|IpCheckerService.Worker\\IpCheckerService.Worker.csproj|c:\\users\\tgree\\source\\repos\\ipcheckerservice\\src\\ipcheckerservice.worker\\reportingengines\\httpreportingengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{44A97C11-9E5E-4800-BCD6-65DB306503EA}|IpCheckerService.Worker\\IpCheckerService.Worker.csproj|solutionrelative:ipcheckerservice.worker\\reportingengines\\httpreportingengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{98865F05-D0E4-4511-92AD-C52172E23BCC}|IpCheckerService.Tests\\IpCheckerService.Tests.csproj|c:\\users\\tgree\\source\\repos\\ipcheckerservice\\src\\ipcheckerservice.tests\\emailreportingengineintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98865F05-D0E4-4511-92AD-C52172E23BCC}|IpCheckerService.Tests\\IpCheckerService.Tests.csproj|solutionrelative:ipcheckerservice.tests\\emailreportingengineintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{44A97C11-9E5E-4800-BCD6-65DB306503EA}|IpCheckerService.Worker\\IpCheckerService.Worker.csproj|c:\\users\\tgree\\source\\repos\\ipcheckerservice\\src\\ipcheckerservice.worker\\reportingengines\\emailreportingengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{98865F05-D0E4-4511-92AD-C52172E23BCC}|IpCheckerService.Tests\\IpCheckerService.Tests.csproj|C:\\Users\\tgree\\source\\repos\\IpCheckerService\\src\\ipcheckerservice.tests\\emailreportingenginetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98865F05-D0E4-4511-92AD-C52172E23BCC}|IpCheckerService.Tests\\IpCheckerService.Tests.csproj|solutionrelative:ipcheckerservice.tests\\emailreportingenginetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44A97C11-9E5E-4800-BCD6-65DB306503EA}|IpCheckerService.Worker\\IpCheckerService.Worker.csproj|C:\\Users\\tgree\\source\\repos\\IpCheckerService\\src\\ipcheckerservice.worker\\reportingengines\\emailreportingengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{44A97C11-9E5E-4800-BCD6-65DB306503EA}|IpCheckerService.Worker\\IpCheckerService.Worker.csproj|solutionrelative:ipcheckerservice.worker\\reportingengines\\emailreportingengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{98865F05-D0E4-4511-92AD-C52172E23BCC}|IpCheckerService.Tests\\IpCheckerService.Tests.csproj|c:\\users\\tgree\\source\\repos\\ipcheckerservice\\src\\ipcheckerservice.tests\\emailreportingenginetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{98865F05-D0E4-4511-92AD-C52172E23BCC}|IpCheckerService.Tests\\IpCheckerService.Tests.csproj|solutionrelative:ipcheckerservice.tests\\emailreportingenginetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{44A97C11-9E5E-4800-BCD6-65DB306503EA}|IpCheckerService.Worker\\IpCheckerService.Worker.csproj|c:\\users\\tgree\\source\\repos\\ipcheckerservice\\src\\ipcheckerservice.worker\\worker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44A97C11-9E5E-4800-BCD6-65DB306503EA}|IpCheckerService.Worker\\IpCheckerService.Worker.csproj|solutionrelative:ipcheckerservice.worker\\worker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44A97C11-9E5E-4800-BCD6-65DB306503EA}|IpCheckerService.Worker\\IpCheckerService.Worker.csproj|c:\\users\\tgree\\source\\repos\\ipcheckerservice\\src\\ipcheckerservice.worker\\reportingengines\\httpreportingengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44A97C11-9E5E-4800-BCD6-65DB306503EA}|IpCheckerService.Worker\\IpCheckerService.Worker.csproj|solutionrelative:ipcheckerservice.worker\\reportingengines\\httpreportingengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,11 +30,41 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "EmailReportingEngineIntegrationTests.cs",
+              "DocumentMoniker": "C:\\Users\\tgree\\source\\repos\\IpCheckerService\\src\\IpCheckerService.Tests\\EmailReportingEngineIntegrationTests.cs",
+              "RelativeDocumentMoniker": "IpCheckerService.Tests\\EmailReportingEngineIntegrationTests.cs",
+              "ToolTip": "C:\\Users\\tgree\\source\\repos\\IpCheckerService\\src\\IpCheckerService.Tests\\EmailReportingEngineIntegrationTests.cs",
+              "RelativeToolTip": "IpCheckerService.Tests\\EmailReportingEngineIntegrationTests.cs",
+              "ViewState": "AQIAACAAAAAA/v////8PwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T23:12:05.319Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Worker.cs",
+              "DocumentMoniker": "C:\\Users\\tgree\\source\\repos\\IpCheckerService\\src\\IpCheckerService.Worker\\Worker.cs",
+              "RelativeDocumentMoniker": "IpCheckerService.Worker\\Worker.cs",
+              "ToolTip": "C:\\Users\\tgree\\source\\repos\\IpCheckerService\\src\\IpCheckerService.Worker\\Worker.cs",
+              "RelativeToolTip": "IpCheckerService.Worker\\Worker.cs",
+              "ViewState": "AQIAAAUAAAAAyczMzMwHwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T22:50:28Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "HttpReportingEngine.cs",
               "DocumentMoniker": "C:\\Users\\tgree\\source\\repos\\IpCheckerService\\src\\IpCheckerService.Worker\\ReportingEngines\\HttpReportingEngine.cs",
               "RelativeDocumentMoniker": "IpCheckerService.Worker\\ReportingEngines\\HttpReportingEngine.cs",
@@ -39,24 +77,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "EmailReportingEngineTests.cs",
               "DocumentMoniker": "C:\\Users\\tgree\\source\\repos\\IpCheckerService\\src\\IpCheckerService.Tests\\EmailReportingEngineTests.cs",
               "RelativeDocumentMoniker": "IpCheckerService.Tests\\EmailReportingEngineTests.cs",
               "ToolTip": "C:\\Users\\tgree\\source\\repos\\IpCheckerService\\src\\IpCheckerService.Tests\\EmailReportingEngineTests.cs",
               "RelativeToolTip": "IpCheckerService.Tests\\EmailReportingEngineTests.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAhAAAA",
+              "ViewState": "AQIAAEsAAAAA8P////8MwAsAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-27T22:36:15.061Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "EmailReportingEngine.cs",
               "DocumentMoniker": "C:\\Users\\tgree\\source\\repos\\IpCheckerService\\src\\IpCheckerService.Worker\\ReportingEngines\\EmailReportingEngine.cs",
               "RelativeDocumentMoniker": "IpCheckerService.Worker\\ReportingEngines\\EmailReportingEngine.cs",

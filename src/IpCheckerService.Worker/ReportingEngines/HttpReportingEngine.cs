@@ -1,6 +1,7 @@
 using System.Text;
 using System.Text.Json;
 using System.Xml.Linq;
+using Microsoft.Extensions.Logging;
 
 namespace IpCheckerService.Worker.ReportingEngines;
 
@@ -8,12 +9,12 @@ public class HttpReportingEngine : IReportingEngine
 {
     private string _endpointUrl = string.Empty;
     private string _deviceName = string.Empty;
-    private Action<string> _log = _ => { };
+    private ILogger _logger = null!;
 
-    public void Initialize(XElement config, string deviceName, Action<string> log)
+    public void Initialize(XElement config, string deviceName, ILogger logger)
     {
         _deviceName = deviceName;
-        _log = log;
+        _logger = logger;
         _endpointUrl = config.Element("EndpointUrl")?.Value
             ?? throw new ArgumentException("EndpointUrl is required for HttpReportingEngine");
     }
@@ -29,18 +30,18 @@ public class HttpReportingEngine : IReportingEngine
         };
 
         string jsonData = JsonSerializer.Serialize(data);
-        _log($"[INFO] Sending IP Address to {_endpointUrl}");
+        _logger.LogInformation("Sending IP Address to {EndpointUrl}", _endpointUrl);
         
         var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
         var postResponse = await client.PostAsync(_endpointUrl, content);
 
         if (postResponse.IsSuccessStatusCode)
         {
-            _log("[INFO] HTTP check-in successful.");
+            _logger.LogInformation("HTTP check-in successful");
         }
         else
         {
-            _log($"[ERROR] HTTP check-in failed: {postResponse.ReasonPhrase}");
+            _logger.LogError("HTTP check-in failed: {ReasonPhrase}", postResponse.ReasonPhrase);
         }
     }
 }
