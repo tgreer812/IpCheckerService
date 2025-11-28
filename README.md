@@ -1,59 +1,117 @@
 # IpCheckerService
-A service that periodically alerts an endpoint with the current IP address of the device running the service.
+A .NET 8 Windows Service that periodically reports the current IP address of the device using configurable reporting engines.
+
+## Features
+- **Multiple Reporting Engines**: Support for HTTP endpoints, email, and extensible custom reporting mechanisms
+- **Modern .NET 8**: Built on the latest .NET framework with Worker Service architecture
+- **Flexible Configuration**: XML-based configuration for heartbeat intervals and reporting engine settings
+- **Structured Logging**: Built-in logging using `Microsoft.Extensions.Logging`
+
+## Project Structure
+```
+src/
+├── IpCheckerService.Worker/       # Main service application
+│   ├── ReportingEngines/          # Reporting engine implementations
+│   │   ├── IReportingEngine.cs
+│   │   ├── HttpReportingEngine.cs
+│   │   └── EmailReportingEngine.cs
+│   └── Worker.cs                  # Background service logic
+└── IpCheckerService.Tests/        # Unit tests
+```
 
 ## Installation Instructions
 
 ### Step 1: Build the Service
-1. Open the `IpCheckerService` project in Visual Studio.
-2. Build the project to generate the service executable. The output should be in the `bin\Debug` or `bin\Release` directory.
+1. Navigate to the `src` directory:
+   ```powershell
+   cd src
+   ```
+2. Build the project:
+   ```powershell
+   dotnet build -c Release
+   ```
 
 ### Step 2: Install the Service
-1. Open Command Prompt as Administrator.
-2. Navigate to the directory containing your service executable. For example:
-   ```cmd
-   cd C:\path\to\your\executable
-   ```
+1. Open PowerShell as Administrator.
+2. Navigate to the build output directory (e.g., `src\IpCheckerService.Worker\bin\Release\net8.0\`).
 3. Install the service using the `sc` command:
-    ```cmd
-    sc create IpCheckerService binPath= "C:\path\to\your\executable\IpCheckerService.exe"
-    ```
+   ```powershell
+   sc.exe create IpCheckerService binPath="C:\path\to\IpCheckerService.Worker.exe"
+   ```
 
 ### Step 3: Start the Service
-1. Open Command Prompt as Administrator.
-2. Start the service using the `sc` command:
-    ```cmd
-    sc start IpCheckerService
-    ```
+1. Start the service:
+   ```powershell
+   sc.exe start IpCheckerService
+   ```
 
 ## Configuration Instructions
 
-### Step 1: Create the Configuration File
-1. In the same directory as your service executable, create a file named IpCheckerServiceConfig.xml.
-2. Add the following content to the IpCheckerServiceConfig.xml file:
-    ```xml
-    <?xml version="1.0" encoding="utf-8"?>
-    <Configuration>
-        <EndpointUrl>http://your-custom-endpoint:9999</EndpointUrl>
-        <HeartbeatInterval>
-            <Days>1</Days>
-            <Hours>0</Hours>
-            <Minutes>0</Minutes>
-            <Seconds>0</Seconds>
-            <Milliseconds>0</Milliseconds>
-        </HeartbeatInterval>
-        <LogFilePath>C:\Path\To\Your\Log\IpCheckerService.log</LogFilePath>
-    </Configuration>
-    ```
+### Configuration File
+The service uses `IpCheckerServiceConfigV2.xml` located in the same directory as the executable.
 
-### Step 2: Customize the Configuration
-1. Replace http://your-custom-endpoint:9999 with the actual URL of the endpoint you want to alert with the current IP address.
-2. Adjust the values of <Days>, <Hours>, <Minutes>, <Seconds>, and <Milliseconds> to set the desired interval for the service to check in with the endpoint.
-3. Set the <LogFilePath> to the desired location for the log file.
+### Example Configuration
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+    <HeartbeatInterval>
+        <Days>1</Days>
+        <Hours>0</Hours>
+        <Minutes>0</Minutes>
+        <Seconds>0</Seconds>
+        <Milliseconds>0</Milliseconds>
+    </HeartbeatInterval>
+    <DeviceName>YourDeviceName</DeviceName>
+    <ReportingEngines>
+        <ReportEngine type="HttpReportingEngine">
+            <EndpointUrl>http://your-custom-endpoint:9999</EndpointUrl>
+        </ReportEngine>
+        <ReportEngine type="EmailReportingEngine">
+            <EmailAddress>recipient@example.com</EmailAddress>
+            <SmtpHost>smtp.gmail.com</SmtpHost>
+            <SmtpPort>587</SmtpPort>
+            <SmtpUsername>your-email@gmail.com</SmtpUsername>
+            <SmtpPassword>your-app-password</SmtpPassword>
+            <UseSsl>true</UseSsl>
+        </ReportEngine>
+    </ReportingEngines>
+</Configuration>
+```
 
-### Step 3: Restart the Service
-1. After modifying the configuration file, restart the service to apply the changes:
-    ```cmd
-    sc stop IpCheckerService
-    sc start IpCheckerService
-    ```
+### Customization
+1. **DeviceName**: Set a unique name to identify this device in reports
+2. **HeartbeatInterval**: Configure how often the service checks and reports the IP address
+3. **ReportingEngines**: Add or remove reporting engines as needed
+   - **HttpReportingEngine**: Sends IP via HTTP POST to a specified endpoint
+   - **EmailReportingEngine**: Sends IP via email using SMTP
+
+### Restart the Service
+After modifying the configuration file, restart the service:
+```powershell
+sc.exe stop IpCheckerService
+sc.exe start IpCheckerService
+```
+
+## Development
+
+### Running Locally
+To run the service as a console application (for testing):
+```powershell
+cd src/IpCheckerService.Worker
+dotnet run
+```
+
+### Running Tests
+```powershell
+cd src
+dotnet test
+```
+
+## Extending with Custom Reporting Engines
+To add a new reporting engine:
+
+1. Create a class implementing `IReportingEngine` in the `ReportingEngines` folder
+2. Implement the `Initialize` and `ReportAsync` methods
+3. Register the type in `Worker.cs` in the `ReportingEngineTypes` dictionary
+4. Add configuration in `IpCheckerServiceConfigV2.xml`
 
