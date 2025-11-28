@@ -67,7 +67,12 @@ The service uses `IpCheckerServiceConfigV2.xml` located in the same directory as
             <EndpointUrl>http://your-custom-endpoint:9999</EndpointUrl>
         </ReportEngine>
         <ReportEngine type="EmailReportingEngine">
-            <EmailAddress>your-email@example.com</EmailAddress>
+            <EmailAddress>recipient@example.com</EmailAddress>
+            <SmtpHost>smtp.gmail.com</SmtpHost>
+            <SmtpPort>587</SmtpPort>
+            <SmtpUsername>your-email@gmail.com</SmtpUsername>
+            <SmtpPassword>your-app-password</SmtpPassword>
+            <UseSsl>true</UseSsl>
         </ReportEngine>
     </ReportingEngines>
 </Configuration>
@@ -78,7 +83,7 @@ The service uses `IpCheckerServiceConfigV2.xml` located in the same directory as
 2. **HeartbeatInterval**: Configure how often the service checks and reports the IP address
 3. **ReportingEngines**: Add or remove reporting engines as needed
    - **HttpReportingEngine**: Sends IP via HTTP POST to a specified endpoint
-   - **EmailReportingEngine**: Sends IP via email (implementation in progress)
+   - **EmailReportingEngine**: Sends IP via email using SMTP
 
 ### Restart the Service
 After modifying the configuration file, restart the service:
